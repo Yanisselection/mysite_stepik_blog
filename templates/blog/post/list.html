@@ -1,15 +1,17 @@
 {% extends 'blog/base.html' %}
-{% block title %}My blog{% endblock title %}
+
+{% block title %}Мой блог{% endblock title %}
+
 {% block content %}
-    <h1>My blog</h1>
+    <h1>Мой Новостной Блог</h1>
     {% for post in posts %}
         <h2>
             <a href="{{ post.get_absolute_url }}"> {{ post.title }}</a>
         </h2>
         <p class="date">
-            Published {{ post.publish }} by {{ post.author }}
+            Опубликовано {{ post.publish }} пользователем {{ post.author }}
         </p>
         {{ post.body|truncatechars:30|linebreaks }}
     {% endfor %}
-    {% include 'pagination.html' with page=posts %}
+    {% include 'pagination.html' with page=page_obj %}
 {% endblock content %}
